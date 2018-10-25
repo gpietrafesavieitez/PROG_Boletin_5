@@ -78,13 +78,13 @@ public class Conta {
     }
     
     public void visualizar(){
-        System.out.println("- Número de cuenta: " + numeroConta + "\n- Nombre del cliente: " + nomeConta + "\n- Saldo disponible: " + saldoConta + " euros\n");
+        System.out.println("\n- Número de cuenta: " + numeroConta + "\n- Nombre del cliente: " + nomeConta + "\n- Saldo disponible: " + saldoConta + " euros");
         
     }
     
     public void transferencia(String cuentaDestino, double importe){
         this.saldoConta -= importe;
-        cuentaDestino += importe; //?????????
+        cuentaDestino += importe; //????????
         
     }
     
