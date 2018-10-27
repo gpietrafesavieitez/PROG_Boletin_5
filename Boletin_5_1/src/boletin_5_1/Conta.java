@@ -8,7 +8,7 @@ public class Conta{
     public Conta(){
     }
     
-    //Constructor con parametros
+    //Constructor con parámetros
     public Conta(String nomeConta, String numeroConta, double saldoConta){
         this.nomeConta = nomeConta;
         this.numeroConta = numeroConta;

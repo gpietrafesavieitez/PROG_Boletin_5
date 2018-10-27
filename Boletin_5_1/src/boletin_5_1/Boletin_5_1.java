@@ -68,7 +68,7 @@ public class Boletin_5_1{
                         String leerNumCuentaDestino = leer.nextLine(); // var leerNumCuentaDestino contiene el input del num de cuenta destino
                         String numCuentaDestino = cuentaDestino.getNumero(); // var numCuentaDestino contiene el num de cuenta destino AUTENTICO
                         if(cuentaOrigen.transferencia(numCuentaDestino, importe) == true){ // Si el valor devuelto por el metodo transferencia es true osea si hay saldo
-                            if(leerNumCuentaDestino.equals(numCuentaDestino)){ // Si num cuenta destino introducido es igual al num cuenta destino real osea si cuenta destino existe
+                            if(leerNumCuentaDestino.equals(numCuentaDestino)){ // Si num cuenta destino introducido es igual a num cuenta destino real osea si cuenta destino existe
                                 cuentaDestino.ingresar(importe);
                                 System.out.println("\n[*] Operación realizada correctamente.");
                                 System.out.println(cuentaDestino.getSaldo()); // D E B U G
