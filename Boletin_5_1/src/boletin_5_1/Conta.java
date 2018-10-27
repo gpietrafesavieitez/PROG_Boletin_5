@@ -68,9 +68,13 @@ public class Conta{
         System.out.println("\n- Número de cuenta:\t" + numeroConta + ".\n- Nombre del cliente:\t" + nomeConta + ".\n- Saldo disponible:\t" + saldoConta + " euros.");
     }
     
-    public void transferencia(String cuentaDestino, double importe){
-        this.saldoConta -= importe;
-        cuentaDestino += importe; //????????
+    public boolean transferencia(String cuentaDestino, double importe){
+        if(saldoConta - importe >= 0){
+            saldoConta -= importe; //this.saldoConta = this.SaldoConta - importe;
+            return true;
+        }else{
+            return false;
+        }
     }
     
 }

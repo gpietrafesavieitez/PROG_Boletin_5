@@ -4,8 +4,8 @@ import java.util.Scanner;
 public class Boletin_5_1{
     
     private static Scanner leer = new Scanner(System.in);
-    private static Conta cuenta1 = new Conta("Gabriel","1234",100);
-    private static Conta cuenta2 = new Conta("Belfegor","666",666);
+    private static Conta cuentaOrigen = new Conta("Gabriel","1234",100);
+    private static Conta cuentaDestino = new Conta("Belfegor","666",666);
     
     private static int menuBanco(){
         int opcion = 0;
@@ -36,11 +36,11 @@ public class Boletin_5_1{
             switch(opcion){
                 case 1:
                     System.out.print("\n[*] Detalles de su cuenta bancaria: ");
-                    cuenta1.visualizar(); break;
+                    cuentaOrigen.visualizar(); break;
                 case 2:
                     System.out.print("\n[-] Introduzca la cantidad que desea ingresar: ");
                     try{
-                        if(cuenta1.ingresar(Integer.parseInt(leer.nextLine())) == true){
+                        if(cuentaOrigen.ingresar(Integer.parseInt(leer.nextLine())) == true){
                             System.out.println("\n[*] Operación realizada correctamente.");
                         }else{
                             System.out.println("\n[*] Operación fallida. Porfavor, inténtelo de nuevo.");
@@ -52,7 +52,7 @@ public class Boletin_5_1{
                 case 3:
                     System.out.print("\n[-] Introduzca la cantidad que desea retirar: ");
                     try{
-                        if(cuenta1.retirar(Integer.parseInt(leer.nextLine())) == true){
+                        if(cuentaOrigen.retirar(Integer.parseInt(leer.nextLine())) == true){
                             System.out.println("\n[*] Operación realizada correctamente.");
                         }else{
                             System.out.println("\n[*] Operación fallida. Porfavor, inténtelo de nuevo.");
@@ -61,7 +61,28 @@ public class Boletin_5_1{
                         System.out.println("\n[*] Formato incorrecto.");
                     }
                     break;
-                case 4: break;
+                case 4:
+                    System.out.print("\n[-] Introduzca la cantidad que desea transferir: ");
+                    try{
+                        double importe = Double.parseDouble(leer.nextLine());
+                        System.out.print("\n[-] Introduzca el número de cuenta de destino: ");
+                        String leerNumCuentaDestino = leer.nextLine();
+                        String numCuentaDestino = cuentaDestino.getNumero();
+                        if(cuentaOrigen.transferencia(numCuentaDestino, importe) == true){
+                            if(leerNumCuentaDestino.equals(numCuentaDestino)){
+                                cuentaDestino.ingresar(importe);
+                                System.out.println("\n[*] Operación realizada correctamente.");
+                                cuentaDestino.visualizar(); //Debug
+                            }else{
+                                System.out.println("[*] No existe ninguna cuenta con ese número de cuenta. Operación cancelada.");
+                            }
+                        }else{
+                            System.out.println("\n[*] Operación fallida. Porfavor, inténtelo de nuevo.");
+                        }
+                    }catch(NumberFormatException e){
+                        System.out.println("\n[*] Formato incorrecto.");
+                    }
+                    break;
                 case 0: System.out.println("\n[*] ¡Hasta luego!"); break;
                 default: System.out.println("\n[*] Formato incorrecto."); break;
             }
