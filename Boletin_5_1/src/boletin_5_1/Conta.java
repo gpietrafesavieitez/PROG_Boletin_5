@@ -43,24 +43,20 @@ public class Conta{
     
     //Métodos
     public boolean ingresar(double cantidade){
-        if(cantidade < 0) {
-            return false;
-        }else{
+        if(cantidade > 0) {
             saldoConta += cantidade;
             return true;
+        }else{
+            return false;
         }
     }
     
     public boolean retirar(double cantidade){
-        if(cantidade < 0){
-            return false;
+        if(cantidade > 0 && saldoConta - cantidade >= 0){
+            saldoConta -= cantidade;
+            return true;
         }else {
-            if(saldoConta - cantidade < 0){
-                return false;
-            }else {
-                saldoConta -= cantidade;
-                return true;
-            }
+            return false;
         }
     }
     
@@ -68,9 +64,10 @@ public class Conta{
         System.out.println("\n- Número de cuenta:\t" + numeroConta + ".\n- Nombre del cliente:\t" + nomeConta + ".\n- Saldo disponible:\t" + saldoConta + " euros.");
     }
     
-    public boolean transferencia(String cuentaDestino, double importe){
-        if(saldoConta - importe >= 0){
+    public boolean transferencia(Conta cuentaDestino, double importe){
+        if(importe > 0 && saldoConta - importe >= 0){
             saldoConta -= importe; //this.saldoConta = this.SaldoConta - importe;
+            cuentaDestino.setSaldo(cuentaDestino.getSaldo() + importe);
             return true;
         }else{
             return false;

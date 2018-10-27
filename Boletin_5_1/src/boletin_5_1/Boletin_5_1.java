@@ -33,6 +33,7 @@ public class Boletin_5_1{
         do{
             opcion = menuBanco(); // var opcion contiene el valor int devuelto por menuBanco()
             switch(opcion){
+                case 0: System.out.println("\n[*] ¡Hasta luego!"); break; // Exit
                 case 1: // Muestra datos de la cuenta
                     System.out.print("\n[*] Detalles de su cuenta bancaria: ");
                     cuentaOrigen.visualizar(); break;
@@ -63,18 +64,9 @@ public class Boletin_5_1{
                 case 4: // Sistema de transferencias
                     System.out.print("\n[-] Introduzca la cantidad que desea transferir: ");
                     try{
-                        double importe = Double.parseDouble(leer.nextLine()); // var importe contiene la cantidad a transferir
-                        System.out.print("\n[-] Introduzca el número de cuenta de destino: ");
-                        String leerNumCuentaDestino = leer.nextLine(); // var leerNumCuentaDestino contiene el input del num de cuenta destino
-                        String numCuentaDestino = cuentaDestino.getNumero(); // var numCuentaDestino contiene el num de cuenta destino AUTENTICO
-                        if(cuentaOrigen.transferencia(numCuentaDestino, importe) == true){ // Si el valor devuelto por el metodo transferencia es true osea si hay saldo
-                            if(leerNumCuentaDestino.equals(numCuentaDestino)){ // Si num cuenta destino introducido es igual a num cuenta destino real osea si cuenta destino existe
-                                cuentaDestino.ingresar(importe);
+                        if(cuentaOrigen.transferencia(cuentaDestino, Double.parseDouble(leer.nextLine())) == true){ // Si el valor devuelto por el metodo transferencia es true osea si hay saldo
                                 System.out.println("\n[*] Operación realizada correctamente.");
                                 System.out.println(cuentaDestino.getSaldo()); // D E B U G
-                            }else{
-                                System.out.println("\n[*] No existe ninguna cuenta con ese número de cuenta. Operación cancelada.");
-                            }
                         }else{
                             System.out.println("\n[*] Operación fallida. Porfavor, inténtelo de nuevo.");
                         }
@@ -82,7 +74,6 @@ public class Boletin_5_1{
                         System.out.println("\n[*] Formato incorrecto.");
                     }
                     break;
-                case 0: System.out.println("\n[*] ¡Hasta luego!"); break; // Exit
                 default: System.out.println("\n[*] Formato incorrecto."); break; // Excepcion para cuando el input no es un valor entero
             }
         }while(opcion != 0);
