@@ -17,7 +17,7 @@ public class Boletin_5_1{
      * Menú de selección de operaciones.
      * @return Devuelve la opción elegida para operar en el método main().
      */
-    private static int menuBanco(){
+    private static int menu(){
         int opcion;
         System.out.println("\n  __  __                         _         _           _ \n" +
 " |  \\/  |___ _ _ _  _   _ __ _ _(_)_ _  __(_)_ __ __ _| |\n" +
@@ -45,16 +45,16 @@ public class Boletin_5_1{
         System.out.println("[*] Bienvenido a su cuenta bancaria. \n[*] Porfavor, seleccione una opción de las que aparecen a continuación:");
         int opcion;
         do{
-            opcion = menuBanco(); // var opcion contiene el valor int devuelto por menuBanco()
+            opcion = menu(); // var opcion contiene el valor int devuelto por menuBanco()
             switch(opcion){
-                case 0: System.out.println("\n[*] ¡Hasta luego!"); break; // Exit
+                case 0: System.out.println("\n[*] ¡Hasta luego! :)"); break; // Exit
                 case 1: // Muestra datos de la cuenta
                     System.out.print("\n[*] Detalles de su cuenta bancaria: ");
                     cuentaOrigen.visualizar(); break;
                 case 2: // Sistema de ingresos
                     System.out.print("\n[-] Introduzca la cantidad que desea ingresar: ");
                     try{
-                        if(cuentaOrigen.ingresar(Integer.parseInt(leer.nextLine())) == true){ // Si el valor devuelto por el metodo ingresar es true osea si la cantidad no es negativa
+                        if(cuentaOrigen.ingresar(Integer.parseInt(leer.nextLine()))){ // Si el valor devuelto por el metodo ingresar es true osea si la cantidad no es negativa
                             System.out.println("\n[*] Operación realizada correctamente.");
                         }else{
                             System.out.println("\n[*] Operación fallida. Porfavor, inténtelo de nuevo.");
@@ -66,7 +66,7 @@ public class Boletin_5_1{
                 case 3: // Sistema de reintegros
                     System.out.print("\n[-] Introduzca la cantidad que desea retirar: ");
                     try{
-                        if(cuentaOrigen.retirar(Integer.parseInt(leer.nextLine())) == true){ // Si el valor devuelto por el metodo ingresar es true osea si la cantidad no es negativa y si hay saldo
+                        if(cuentaOrigen.retirar(Integer.parseInt(leer.nextLine()))){ // Si el valor devuelto por el metodo ingresar es true osea si la cantidad no es negativa y si hay saldo
                             System.out.println("\n[*] Operación realizada correctamente.");
                         }else{
                             System.out.println("\n[*] Operación fallida. Porfavor, inténtelo de nuevo.");
@@ -78,7 +78,7 @@ public class Boletin_5_1{
                 case 4: // Sistema de transferencias
                     System.out.print("\n[-] Introduzca la cantidad que desea transferir: ");
                     try{
-                        if(cuentaOrigen.transferencia(cuentaDestino, Double.parseDouble(leer.nextLine())) == true){ // Si el valor devuelto por el metodo transferencia es true osea si hay saldo
+                        if(cuentaOrigen.transferencia(cuentaDestino, Double.parseDouble(leer.nextLine()))){ // Si el valor devuelto por el metodo transferencia es true osea si hay saldo
                                 System.out.println("\n[*] Operación realizada correctamente.");
                                 System.out.println(cuentaDestino.getSaldo()); // D E B U G
                         }else{
