@@ -75,8 +75,9 @@ public class Conta{
     /**
      * Muestra por pantalla los atributos de la cuenta actual.
      */
-    public void visualizar(){
-        System.out.println("\n- Número de cuenta:\t" + numeroConta + ".\n- Nombre del cliente:\t" + nomeConta + ".\n- Saldo disponible:\t" + saldoConta + " euros.");
+    @Override
+    public String toString(){
+        return "\n- Número de cuenta:\t" + numeroConta + ".\n- Nombre del cliente:\t" + nomeConta + ".\n- Saldo disponible:\t" + saldoConta + " euros.";
     }
     
     /**
