@@ -1,14 +1,24 @@
 package boletin_5_1;
 import java.util.Scanner;
 
+/**
+ * Interfaz del sistema de gestión de cuentas bancarias.
+ * @author Gabriel P.
+ * @version 1.0.0.
+ * @since 2018.
+ * @see <a href="https://www.danielcastelao.org">Moodle Daniel Castelao.</a>
+ */
 public class Boletin_5_1{
     private static Scanner leer = new Scanner(System.in);
     private static Conta cuentaOrigen = new Conta("Gabriel","1234",100);
     private static Conta cuentaDestino = new Conta("Belfegor","666",666);
     
+    /**
+     * Menú de selección de operaciones.
+     * @return Devuelve la opción elegida para operar en el método main().
+     */
     private static int menuBanco(){
         int opcion;
-
         System.out.println("\n  __  __                         _         _           _ \n" +
 " |  \\/  |___ _ _ _  _   _ __ _ _(_)_ _  __(_)_ __ __ _| |\n" +
 " | |\\/| / -_| ' | || | | '_ | '_| | ' \\/ _| | '_ / _` | |\n" +
@@ -27,6 +37,10 @@ public class Boletin_5_1{
     return opcion;
     }
 
+    /**
+     * Ejecuta la operación correspondiente en función de la opción elegida en el método menuBanco(). 
+     * @param args 
+     */
     public static void main(String[] args){
         System.out.println("[*] Bienvenido a su cuenta bancaria. \n[*] Porfavor, seleccione una opción de las que aparecen a continuación:");
         int opcion;
